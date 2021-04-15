@@ -1,0 +1,2 @@
+# meddiffTech
+technical interview codes
