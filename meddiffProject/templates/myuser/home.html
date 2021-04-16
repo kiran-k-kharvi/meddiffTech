@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>My data Table</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    
+<div class="container">
+  <h2>User Table</h2>
+  <div class="jumbotron">
+    <form class="form-inline" method="POST">
+        <div class="form-group">
+          <label for="exampleInputName2">Name</label>
+          <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail2">Roll Number</label>
+          <input type="text" class="form-control" id="exampleInputEmail2" placeholder="RollNumber">
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="exampleInputEmail4">Age</label>
+          <input type="text" class="form-control" id="exampleInputEmail4" placeholder="22">
+        </div>
+        
+        <div class="form-group">
+          <label for="exampleInputEmail3">Gender</label>
+          <input type="text" class="form-control" id="exampleInputEmail3" placeholder="male/female">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-default">Add record</button>
+        {% csrf_token %}
+      </form>
+  </div>
+  <button type="button" class="btn btn-primary">Add</button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>RollNumber</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Operations</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for k,v in rows.items %}
+      <tr>
+
+        <td>{{v.0}}</td>
+        <td>{{k}}</td>
+        <td>{{v.1}}</td>
+        <td>{{v.2}}</td>
+        <td><input type="button" value="Delete" onclick="">
+            <input type="button" value="update"></td> 
+      </tr>
+        
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
