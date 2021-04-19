@@ -9,35 +9,49 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-    
 <div class="container">
   <h2>User Table</h2>
   <div class="jumbotron">
-    <form class="form-inline" method="POST">
-        <div class="form-group">
+    <form class="form-inline " method="POST" action="">
+      {% csrf_token %}
+
+      <div class="row">
+        <div class="form-group col-4 ">
           <label for="exampleInputName2">Name</label>
-          <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+          <input name="Name" type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
         </div>
-        <div class="form-group">
+        <div class="form-group col-4"></div>
+        <div class="form-group col-4 ">
           <label for="exampleInputEmail2">Roll Number</label>
-          <input type="text" class="form-control" id="exampleInputEmail2" placeholder="RollNumber">
+          <input type="text" name="RollNumber" class="form-control" id="exampleInputEmail2" placeholder="RollNumber">
         </div>
-        <br>
-        <div class="form-group">
+      </div>
+      <br>
+      <div class="row">
+
+        <div class="form-group col-4">
           <label for="exampleInputEmail4">Age</label>
-          <input type="text" class="form-control" id="exampleInputEmail4" placeholder="22">
+          <input type="text"  name="Age" class="form-control" id="exampleInputEmail4" placeholder="22">
         </div>
-        
-        <div class="form-group">
+        <div class="form-group col-4">
+        </div>
+        <div class="form-group col-4">
           <label for="exampleInputEmail3">Gender</label>
-          <input type="text" class="form-control" id="exampleInputEmail3" placeholder="male/female">
+          <input type="text" name="Gender" class="form-control" id="exampleInputEmail3" placeholder="male/female">
+        </div>
         </div>
         <br>
         <button type="submit" class="btn btn-default">Add record</button>
-        {% csrf_token %}
+        
       </form>
+      <br>
+      <h5>{{msg}}</h5>
   </div>
-  <button type="button" class="btn btn-primary">Add</button>
+
+  <div class="text-right">
+  <button type="button" class="btn btn-danger">Delete</button>
+  </div>
+
   <table class="table">
     <thead>
       <tr>
@@ -56,8 +70,7 @@
         <td>{{k}}</td>
         <td>{{v.1}}</td>
         <td>{{v.2}}</td>
-        <td><input type="button" value="Delete" onclick="">
-            <input type="button" value="update"></td> 
+        <td><input type="checkbox" class="custom-control-input" name="checks" id={{k}} value="{{k}}"></td> 
       </tr>
         
         {% endfor %}

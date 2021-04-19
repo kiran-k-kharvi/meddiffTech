@@ -18,5 +18,6 @@ from django.urls import path
 from noDBproj import views
 urlpatterns = [
     path('',views.home,name='home'),
+    # path('register/',views.regi,name='regi'),
     path('admin/', admin.site.urls),
 ]
